@@ -1,7 +1,7 @@
 import { BookOpenText, Map } from 'lucide-react'
 import Link from 'next/link'
 
-export function TopBar() {
+export function TopBar({ activeProjectSlug = 'newman-aquatic-centre' }: { activeProjectSlug?: string }) {
   return (
     <header className="border-b border-paper/15 bg-glass text-paper backdrop-blur-xl">
       <div className="flex min-h-18 items-center justify-between gap-4 px-4 md:px-8">
@@ -31,7 +31,7 @@ export function TopBar() {
             <span className="hidden sm:inline">All projects</span>
           </Link>
           <Link
-            href="/read/newman-aquatic-centre"
+            href={`/read/${activeProjectSlug}`}
             className="flex min-h-11 items-center gap-2 rounded-md px-3 text-[13px] font-bold text-paper/80 outline-none transition-colors hover:bg-paper/10 hover:text-paper focus-visible:ring-2 focus-visible:ring-ember-lit"
           >
             <BookOpenText aria-hidden="true" className="size-4" />
