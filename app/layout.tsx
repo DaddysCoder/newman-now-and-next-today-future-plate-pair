@@ -1,37 +1,34 @@
-import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import { Manrope, Spectral } from 'next/font/google'
 import './globals.css'
 
+const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-manrope',
+  display: 'swap',
+})
+
+const spectral = Spectral({
+  subsets: ['latin'],
+  weight: ['600'],
+  variable: '--font-spectral',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
-  title: 'Newman Aquatic Centre — Proposed Concept',
-  description:
-    'A community consultation view of a proposed aquatic centre on the edge of the Newman townsite, East Pilbara. Drag to compare the site today with the concept.',
-  generator: 'v0.app',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+  title: {
+    default: 'Newman: Now and Next',
+    template: '%s — Newman: Now and Next',
   },
+  description:
+    'Explore future proposals being considered for Newman by the Shire of East Pilbara.',
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light dark',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
+  colorScheme: 'dark',
+  themeColor: '#140c06',
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({
@@ -40,11 +37,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="bg-background">
-      <body className="antialiased">
-        {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
-      </body>
+    <html
+      lang="en-AU"
+      className={`${manrope.variable} ${spectral.variable} bg-background`}
+    >
+      <body className="font-sans">{children}</body>
     </html>
   )
 }
