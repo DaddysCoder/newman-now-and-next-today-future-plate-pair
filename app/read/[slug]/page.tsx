@@ -1,17 +1,6 @@
 import { redirect } from 'next/navigation'
 import { isAuthoredProject, projects } from '@/content/projects'
 
-type ReadPageProps = {
-  params: Promise<{ slug: string }>
-}
-
-export default async function ReadPage({ params }: ReadPageProps) {
-  const { slug } = await params
-  const project = projects.find((entry) => entry.slug === slug)
-
-  if (!project || !isAuthoredProject(project)) {
-    redirect('/projects/newman-aquatic-centre')
-  }
-
-  redirect(`/projects/${slug}`)
+export default function ReadPage() {
+  return <ProjectChapter project={aquaticCentre} />
 }

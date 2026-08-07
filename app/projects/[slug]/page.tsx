@@ -3,21 +3,6 @@ import { redirect } from 'next/navigation'
 import { ProjectChapter } from '@/components/project-chapter'
 import { isAuthoredProject, projects } from '@/content/projects'
 
-type ProjectPageProps = {
-  params: Promise<{ slug: string }>
-}
-
-export function generateStaticParams() {
-  return projects.filter(isAuthoredProject).map((project) => ({ slug: project.slug }))
-}
-
-export default async function ProjectPage({ params }: ProjectPageProps) {
-  const { slug } = await params
-  const project = projects.find((entry) => entry.slug === slug)
-
-  if (!project || !isAuthoredProject(project)) {
-    redirect('/projects/newman-aquatic-centre')
-  }
-
-  return <ProjectChapter project={project} />
+export default function ProjectPage() {
+  return <ProjectChapter project={aquaticCentre} />
 }
