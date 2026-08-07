@@ -1,4 +1,4 @@
-import { notFound, redirect } from 'next/navigation'
+import { redirect } from 'next/navigation'
 import { isAuthoredProject, projects } from '@/content/projects'
 
 type ReadPageProps = {
@@ -10,7 +10,7 @@ export default async function ReadPage({ params }: ReadPageProps) {
   const project = projects.find((entry) => entry.slug === slug)
 
   if (!project || !isAuthoredProject(project)) {
-    notFound()
+    redirect('/projects/newman-aquatic-centre')
   }
 
   redirect(`/projects/${slug}`)

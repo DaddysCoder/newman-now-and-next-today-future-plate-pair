@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation'
+import { redirect } from 'next/navigation'
 
 import { HotspotExplorer } from '@/components/hotspot-explorer'
 import { isAuthoredProject, projects } from '@/content/projects'
@@ -15,7 +15,9 @@ export default async function ComparePage({ params }: ComparePageProps) {
   const { slug } = await params
   const project = projects.find((entry) => entry.slug === slug)
 
-  if (!project || !isAuthoredProject(project)) notFound()
+  if (!project || !isAuthoredProject(project)) {
+    redirect('/projects/newman-aquatic-centre/compare')
+  }
 
   return <HotspotExplorer project={project} />
 }
