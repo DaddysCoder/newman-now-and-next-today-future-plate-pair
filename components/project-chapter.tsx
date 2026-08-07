@@ -57,7 +57,7 @@ export function ProjectChapter({ project }: { project: Project }) {
                 Explore the proposal
                 <ArrowRight aria-hidden="true" className="size-4" />
               </Link>
-              <Link href={`/story/${project.slug}`} className="flex min-h-12 items-center justify-between gap-3 rounded-md border border-rule px-4 text-sm font-extrabold text-ink outline-none transition-colors hover:bg-water/10 focus-visible:ring-2 focus-visible:ring-water focus-visible:ring-offset-2">
+              <Link prefetch={false} href={`/story/${project.slug}`} className="flex min-h-12 items-center justify-between gap-3 rounded-md border border-rule px-4 text-sm font-extrabold text-ink outline-none transition-colors hover:bg-water/10 focus-visible:ring-2 focus-visible:ring-water focus-visible:ring-offset-2">
                 Follow the guided story
                 <ArrowRight aria-hidden="true" className="size-4" />
               </Link>

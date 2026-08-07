@@ -22,35 +22,50 @@ export function ChapterRail({ currentChapter }: ChapterRailProps) {
             const isCurrent = chapter === currentChapter
             const isPlaceholder = 'placeholder' in project
 
-            return (
-              <li key={project.slug} className="w-36 md:w-40">
-                <Link
-                  href={`/projects/${project.slug}`}
-                  aria-current={isCurrent ? 'page' : undefined}
+            const chapterContent = (
+              <>
+                <span
                   className={cn(
-                    'group flex min-h-18 flex-col gap-2 rounded-md px-3 py-2 outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ember-lit',
-                    isCurrent ? 'bg-paper text-ink' : 'text-paper hover:bg-paper/10',
+                    'flex size-8 items-center justify-center rounded-full border text-xs font-extrabold',
+                    isCurrent
+                      ? 'border-ember bg-ember text-ink'
+                      : 'border-paper/30 bg-forest text-paper',
                   )}
                 >
-                  <span
+                  {chapter}
+                </span>
+                <span className="line-clamp-2 text-[13px] font-bold leading-snug">
+                  {project.name}
+                </span>
+                {isPlaceholder && (
+                  <span className="text-[11px] font-semibold tracking-[0.12em] text-paper/55 uppercase">
+                    Awaiting details
+                  </span>
+                )}
+              </>
+            )
+
+            return (
+              <li key={project.slug} className="w-36 md:w-40">
+                {isPlaceholder ? (
+                  <div
+                    aria-disabled="true"
+                    className="flex min-h-18 cursor-not-allowed flex-col gap-2 rounded-md px-3 py-2 text-paper opacity-70"
+                  >
+                    {chapterContent}
+                  </div>
+                ) : (
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    aria-current={isCurrent ? 'page' : undefined}
                     className={cn(
-                      'flex size-8 items-center justify-center rounded-full border text-xs font-extrabold',
-                      isCurrent
-                        ? 'border-ember bg-ember text-ink'
-                        : 'border-paper/30 bg-forest text-paper',
+                      'group flex min-h-18 flex-col gap-2 rounded-md px-3 py-2 text-paper outline-none transition-colors hover:bg-paper/10 focus-visible:ring-2 focus-visible:ring-ember-lit',
+                      isCurrent && 'bg-paper text-ink',
                     )}
                   >
-                    {chapter}
-                  </span>
-                  <span className="line-clamp-2 text-[13px] font-bold leading-snug">
-                    {project.name}
-                  </span>
-                  {isPlaceholder && (
-                    <span className={cn('text-[11px] font-semibold uppercase tracking-[0.12em]', isCurrent ? 'text-ink-soft' : 'text-paper/55')}>
-                      Awaiting details
-                    </span>
-                  )}
-                </Link>
+                    {chapterContent}
+                  </Link>
+                )}
               </li>
             )
           })}

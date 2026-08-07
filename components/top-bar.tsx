@@ -25,6 +25,7 @@ export function TopBar({ activeProjectSlug = 'newman-aquatic-centre' }: { active
         <nav aria-label="Primary navigation" className="flex shrink-0 items-center gap-1 md:gap-2">
           <Link
             href="/projects"
+            prefetch={false}
             className="flex min-h-11 items-center gap-2 rounded-md px-3 text-[13px] font-bold text-paper/80 outline-none transition-colors hover:bg-paper/10 hover:text-paper focus-visible:ring-2 focus-visible:ring-ember-lit"
           >
             <Map aria-hidden="true" className="size-4" />
@@ -32,6 +33,7 @@ export function TopBar({ activeProjectSlug = 'newman-aquatic-centre' }: { active
           </Link>
           <Link
             href={`/read/${activeProjectSlug}`}
+            prefetch={false}
             className="flex min-h-11 items-center gap-2 rounded-md px-3 text-[13px] font-bold text-paper/80 outline-none transition-colors hover:bg-paper/10 hover:text-paper focus-visible:ring-2 focus-visible:ring-ember-lit"
           >
             <BookOpenText aria-hidden="true" className="size-4" />
