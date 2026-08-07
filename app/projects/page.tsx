@@ -1,6 +1,5 @@
-import { ProjectChapter } from '@/components/project-chapter'
-import { aquaticCentre } from '@/content/projects'
+import { ProjectsOverview } from '@/components/projects-overview'
 
 export default function ProjectsPage() {
-  return <ProjectChapter project={aquaticCentre} />
+  return <ProjectsOverview />
 }
