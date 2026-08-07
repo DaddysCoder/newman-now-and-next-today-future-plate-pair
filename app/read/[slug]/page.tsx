@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation'
-import { isAuthoredProject, projects } from '@/content/projects'
+import { ProjectChapter } from '@/components/project-chapter'
+import { aquaticCentre } from '@/content/projects'
 
 export default function ReadPage() {
   return <ProjectChapter project={aquaticCentre} />
