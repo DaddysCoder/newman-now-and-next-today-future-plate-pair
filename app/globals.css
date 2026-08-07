@@ -111,6 +111,24 @@
   }
 }
 
+@keyframes story-drift {
+  from {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.1) translate3d(-1.5%, -1%, 0);
+  }
+}
+
+.story-scene {
+  transform: scale(1.02);
+  transform-origin: 58% 48%;
+}
+
+.story-scene-playing {
+  animation: story-drift 52s ease-in-out both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
