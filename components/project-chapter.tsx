@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import { ChapterRail } from '@/components/chapter-rail'
 import { Compare } from '@/components/compare'
+import { SiteFooter } from '@/components/site-footer'
 import { TopBar } from '@/components/top-bar'
 import type { Project } from '@/content/projects'
 
@@ -71,6 +72,7 @@ export function ProjectChapter({ project }: { project: Project }) {
         </section>
       </main>
       <ChapterRail currentChapter={project.chapter} />
+      <SiteFooter />
     </div>
   )
 }
