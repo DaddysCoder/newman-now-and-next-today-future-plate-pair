@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { ArrowUpRight, Info, MapPin } from 'lucide-react'
+import { SiteFooter } from '@/components/site-footer'
 import { TopBar } from '@/components/top-bar'
 import { projects, type Theme } from '@/content/projects'
 import { cn } from '@/lib/utils'
@@ -38,6 +39,7 @@ export function ProjectsOverview() {
           <ProjectMap filter={filter} selected={selected} setSelected={setSelected} />
         </div>
       </main>
+      <SiteFooter />
     </div>
   )
 }
